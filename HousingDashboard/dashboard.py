@@ -1,7 +1,5 @@
-
-
-
 # Import the libraries needed for the dashboard
+import os
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -19,7 +17,13 @@ st.write("Explore housing data and compare different areas of Ireland.")
 st.divider()
 
 # Automatically read the CSV file
-df = pd.read_csv("housing_data.csv")
+# Find the CSV file in the same folder as dashboard.py
+csv_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "housing_data.csv"
+)
+
+df = pd.read_csv(csv_path)
 
 # SECTION 1: DATA PREVIEW
 
@@ -145,5 +149,7 @@ if len(numeric_columns) > 0:
         else:
             st.warning("There is no data available for this chart.")
 
+else:
+    st.warning("A chart cannot be created without numeric columns.")
 else:
     st.warning("A chart cannot be created without numeric columns.")
