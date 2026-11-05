@@ -151,5 +151,3 @@ if len(numeric_columns) > 0:
 
 else:
     st.warning("A chart cannot be created without numeric columns.")
-else:
-    st.warning("A chart cannot be created without numeric columns.")
